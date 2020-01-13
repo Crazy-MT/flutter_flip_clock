@@ -14,6 +14,8 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:math' as math;
 
+import 'package:flutter_flip_clock/system_util.dart';
+
 typedef Widget DigitBuilder(BuildContext, int);
 
 ///
@@ -64,120 +66,16 @@ class FlipClock extends StatelessWidget {
     @required Color digitColor,
     @required Color backgroundColor,
     @required double digitSize,
+    @required this.width,
+    @required this.height,
     BorderRadius borderRadius = const BorderRadius.all(Radius.circular(0.0)),
     this.spacing = const EdgeInsets.symmetric(horizontal: 2.0),
     this.flipDirection = FlipDirection.down,
-    this.height = 60.0,
-    this.width = 44.0,
     this.timeLeft,
   })  : countdownMode = false,
         _showHours = true,
         _showDays = false,
         onDone = null {
-    _digitBuilder = (context, digit) => Container(
-          alignment: Alignment.center,
-          width: width,
-          height: height,
-          decoration: BoxDecoration(
-            color: backgroundColor,
-            borderRadius: borderRadius,
-          ),
-          child: Text(
-            '$digit',
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: digitSize,
-                color: digitColor),
-          ),
-        );
-    _separator = Container(
-      decoration: BoxDecoration(
-        color: backgroundColor,
-        borderRadius: borderRadius,
-      ),
-      width: width / 2,
-      height: height,
-      alignment: Alignment.center,
-      child: Text(
-        ':',
-        style: TextStyle(
-          fontSize: digitSize,
-          color: digitColor,
-        ),
-      ),
-    );
-  }
-
-  FlipClock.countdown({
-    Key key,
-    @required Duration duration,
-    @required Color digitColor,
-    @required Color backgroundColor,
-    @required double digitSize,
-    BorderRadius borderRadius = const BorderRadius.all(Radius.circular(0.0)),
-    this.spacing = const EdgeInsets.symmetric(horizontal: 2.0),
-    this.onDone,
-    this.flipDirection = FlipDirection.down,
-    this.height = 60.0,
-    this.width = 44.0,
-    this.startTime,
-  })  : countdownMode = true,
-        timeLeft = duration,
-        _showHours = duration.inHours > 0,
-        _showDays = false {
-    _digitBuilder = (context, digit) => Container(
-          alignment: Alignment.center,
-          width: width,
-          height: height,
-          decoration: BoxDecoration(
-            color: backgroundColor,
-            borderRadius: borderRadius,
-          ),
-          child: Text(
-            '$digit',
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: digitSize,
-                color: digitColor),
-          ),
-        );
-    _separator = Container(
-      decoration: BoxDecoration(
-        color: backgroundColor,
-        borderRadius: borderRadius,
-      ),
-      width: width / 2,
-      height: height,
-      alignment: Alignment.center,
-      child: Text(
-        ':',
-        style: TextStyle(
-          fontSize: digitSize,
-          color: digitColor,
-        ),
-      ),
-    );
-  }
-
-  FlipClock.reverseCountdown({
-    Key key,
-    // @required DateTime now,
-    // @required DateTime dDay,
-    @required Duration duration,
-    @required Color digitColor,
-    @required Color backgroundColor,
-    @required double digitSize,
-    BorderRadius borderRadius = const BorderRadius.all(Radius.circular(0.0)),
-    this.spacing = const EdgeInsets.symmetric(horizontal: 2.0),
-    this.onDone,
-    this.flipDirection = FlipDirection.down,
-    this.height = 40.0,
-    this.width = 24.0,
-  })  : countdownMode = true,
-        startTime = DateTime(2018, 0, 0, 0, 0, duration.inSeconds),
-        _showHours = true,
-        _showDays = true,
-        timeLeft = duration {
     _digitBuilder = (context, digit) => Container(
           alignment: Alignment.center,
           width: width,
