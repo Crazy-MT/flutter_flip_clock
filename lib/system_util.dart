@@ -31,6 +31,7 @@ double getScreenHeight(BuildContext context) {
     return _screenHeight;
   } else {
     final height = MediaQuery.of(context).size.height;
+    print(MediaQuery.of(context).devicePixelRatio);
     _screenHeight = height;
 
     return _screenHeight;

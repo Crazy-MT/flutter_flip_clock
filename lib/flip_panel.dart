@@ -43,24 +43,10 @@ class FlipClock extends StatelessWidget {
   final double height;
   final double width;
 
-  FlipClock({
-    Key key,
-    @required DigitBuilder digitBuilder,
-    @required Widget separator,
-    @required this.startTime,
-    this.countdownMode = false,
-    this.spacing = const EdgeInsets.symmetric(horizontal: 2.0),
-    this.flipDirection = FlipDirection.down,
-    this.height = 44.0,
-    this.width = 60.0,
-    this.timeLeft,
-  })  : _showHours = true,
-        _showDays = false,
-        _digitBuilder = digitBuilder,
-        _separator = separator,
-        onDone = null;
+  final double screenWidth;
+  final double screenHeight;
 
-  FlipClock.simple({
+  FlipClock({
     Key key,
     @required this.startTime,
     @required Color digitColor,
@@ -68,6 +54,8 @@ class FlipClock extends StatelessWidget {
     @required double digitSize,
     @required this.width,
     @required this.height,
+    @required this.screenWidth,
+    @required this.screenHeight,
     BorderRadius borderRadius = const BorderRadius.all(Radius.circular(0.0)),
     this.spacing = const EdgeInsets.symmetric(horizontal: 2.0),
     this.flipDirection = FlipDirection.down,
@@ -108,6 +96,7 @@ class FlipClock extends StatelessWidget {
         ),
       ),
     );
+    debugPrint("MTMTMTMT$screenWidth---$screenHeight--$width--$height--$digitSize");
   }
 
   @override
