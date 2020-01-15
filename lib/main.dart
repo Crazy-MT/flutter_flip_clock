@@ -52,6 +52,14 @@ class _FlipClockState extends State<FlipClockPage> with WidgetsBindingObserver {
   }
 
   @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    if (state == AppLifecycleState.resumed) {
+      setState(() {});
+    }
+  }
+
+  @override
   void dispose() {
     super.dispose();
 
