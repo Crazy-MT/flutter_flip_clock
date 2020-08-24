@@ -11,18 +11,18 @@ void main() {
   Observable.just(WidgetsFlutterBinding.ensureInitialized())
       .map((_) => debugPaintSizeEnabled = false)
       .map((_) => SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-            statusBarColor: Colors.transparent,
-            //状态栏
-            systemNavigationBarColor: Color(0xfff0f0f0),
-            //虚拟按键背景色
-            systemNavigationBarDividerColor: Colors.transparent,
-            systemNavigationBarIconBrightness: Brightness.dark,
-            //虚拟按键图标色
-            statusBarIconBrightness: Brightness.light,
-            statusBarBrightness: Brightness.light,
-          )))
+    statusBarColor: Colors.transparent,
+    //状态栏
+    systemNavigationBarColor: Color(0xfff0f0f0),
+    //虚拟按键背景色
+    systemNavigationBarDividerColor: Colors.transparent,
+    systemNavigationBarIconBrightness: Brightness.dark,
+    //虚拟按键图标色
+    statusBarIconBrightness: Brightness.light,
+    statusBarBrightness: Brightness.light,
+  )))
       .map((_) => SystemChrome.setPreferredOrientations(
-          [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeLeft]))
+      [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeLeft]))
       .listen((_) => runApp(new MyApp()));
 }
 
