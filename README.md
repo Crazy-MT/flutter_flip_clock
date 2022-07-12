@@ -1,3 +1,5 @@
+支持 flutter 3.0.3 版本，支持 Desktop and Web
+
 # flutter_flip_clock
 
 #### 翻页时钟
