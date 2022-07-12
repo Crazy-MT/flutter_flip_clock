@@ -8,9 +8,9 @@ import 'package:wakelock/wakelock.dart';
 import 'flip_panel.dart';
 
 void main() {
-  Observable.just(WidgetsFlutterBinding.ensureInitialized())
+  Stream.value(WidgetsFlutterBinding.ensureInitialized())
       .map((_) => debugPaintSizeEnabled = false)
-      .map((_) => SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      .map((_) => SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
     //状态栏
     systemNavigationBarColor: Color(0xfff0f0f0),
@@ -23,13 +23,14 @@ void main() {
   )))
       .map((_) => SystemChrome.setPreferredOrientations(
       [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeLeft]))
-      .listen((_) => runApp(new MyApp()));
+      .listen((_) => runApp(MyApp()));
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData.light().copyWith(
         scaffoldBackgroundColor: Colors.white,
       ),

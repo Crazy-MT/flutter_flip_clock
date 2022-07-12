@@ -1,4 +1,4 @@
-package com.mt.flutter_flip_clock
+package com.crazy.mt.flutter_flip_clock
 
 import io.flutter.embedding.android.FlutterActivity
 
